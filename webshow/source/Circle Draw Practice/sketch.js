@@ -11,7 +11,7 @@ var error = 0;
 var fillColor = 100;
 var comment = '';
 var combo = 0;
-
+var score = 0;
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(255);
@@ -19,6 +19,7 @@ function setup() {
 	ellipseMode(RADIUS);
 	textAlign(CENTER);
 	pathCenter = createVector(0, 0);
+	pixelDensity(1);
 	estimatedRadius = 0;
 }
 
@@ -60,7 +61,7 @@ function runTest() {
 	segment = 64;
 	theta = 360 / segment;
 	o = createVector(windowWidth/2, windowHeight/2);
-	r = min(windowWidth/2, windowHeight/2) * 0.5;
+	r = min(windowWidth/2, windowHeight/2) * 0.7;
 	v = createVector(r, 0);
 	drawBuffer = []
 	for(let i = 0 ; i <= segment * 1.2; i++) {
@@ -179,17 +180,26 @@ function calFillColor() {
 	wrongColor = color(200, 0, 0);
 	correctColor = color(0, 200, 0);
 	colorMode(HSB);
-	fillColor = lerpColor(wrongColor, correctColor, map(error, 0, 1000, 1, 0, true));
+	fillColor = lerpColor(wrongColor, correctColor, map(score, 0, 100, 0, 1, true));
+}
+
+function calScore() {
+	a = 0.1 	// scale to score, larger is more sensitive
+	b = 2		// compensation for small circle
+	mse_measure = error / estimatedRadius
+	size_measure = 2 * estimatedRadius / min(windowWidth, windowHeight)
+	score = 100 * exp(- a * mse_measure * exp(size_measure * b));
+	print('comment data  ', score, mse_measure, size_measure);
 }
 
 function calComment() {
-	if(error < 150) {
+	if(score > 80) {
 		comment = 'Perfect!';
 		combo += 1;
-	} else if(error < 250) {
+	} else if(score > 75) {
 		comment = 'Fine';
 		combo = 0;
-	} else if(error < 500) {
+	} else if(error > 60) {
 		comment = 'hmm..';
 		combo = 0;
 	} else {
@@ -204,6 +214,7 @@ function submitCircle() {
 	calPreciseCenter(intPath);
 	calRadius(intPath);
 	error = calError(intPath) * 1000; // mean sqrt error (x1000)
+	calScore();
 	calFillColor();
 	calComment();
 	print('mse error (x1000): ', error);
