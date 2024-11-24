@@ -24,6 +24,7 @@ function setup() {
 }
 
 var testEnabled = true;
+var startTime = 0;
 function draw() {
 	background(255);
 	// press 't' to test
@@ -35,11 +36,12 @@ function draw() {
 		if(!drawing) {
 			drawing = true;
 			drawBuffer = [];
+			startTime = millis();
 		}
 		drawBuffer.push(createVector(mouseX, mouseY))
 	} else {
 		if(drawing) {
-			print(drawBuffer.length)
+			print('time elapse (s): ', (millis() - startTime) / 1000);
 			submitCircle();
 			drawing = false;
 		} else {
@@ -184,22 +186,25 @@ function calFillColor() {
 }
 
 function calScore() {
-	a = 0.1 	// scale to score, larger is more sensitive
+	a = 0.05 	// scale to score, larger is more sensitive
 	b = 2		// compensation for small circle
-	mse_measure = error / estimatedRadius
+	mse_measure = error / estimatedRadius	// my friend told me that (mse/r) will still leave pixel as unit, 
+											// which means the measure is possibly correlated to size.
+											// But I am tired of adjust a/b, so just let it be.
+											// You can try changing it to (mse/r2) if necessary.
 	size_measure = 2 * estimatedRadius / min(windowWidth, windowHeight)
 	score = 100 * exp(- a * mse_measure * exp(size_measure * b));
-	print('comment data  ', score, mse_measure, size_measure);
+	print('comment data (score,mse__measure,size_measure) ', score, mse_measure, size_measure);
 }
 
 function calComment() {
-	if(score > 80) {
+	if(score > 90) {
 		comment = 'Perfect!';
 		combo += 1;
 	} else if(score > 75) {
 		comment = 'Fine';
 		combo = 0;
-	} else if(error > 60) {
+	} else if(score > 60) {
 		comment = 'hmm..';
 		combo = 0;
 	} else {
