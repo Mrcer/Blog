@@ -19,7 +19,6 @@ function setup() {
 	ellipseMode(RADIUS);
 	textAlign(CENTER);
 	pathCenter = createVector(0, 0);
-	pixelDensity(1);
 	estimatedRadius = 0;
 }
 
@@ -188,13 +187,10 @@ function calFillColor() {
 function calScore() {
 	a = 0.05 	// scale to score, larger is more sensitive
 	b = 2		// compensation for small circle
-	mse_measure = error / estimatedRadius	// my friend told me that (mse/r) will still leave pixel as unit, 
-											// which means the measure is possibly correlated to size.
-											// But I am tired of adjust a/b, so just let it be.
-											// You can try changing it to (mse/r2) if necessary.
+	rmse_measure = error / estimatedRadius
 	size_measure = 2 * estimatedRadius / min(windowWidth, windowHeight)
-	score = 100 * exp(- a * mse_measure * exp(size_measure * b));
-	print('comment data (score,mse__measure,size_measure) ', score, mse_measure, size_measure);
+	score = 100 * exp(- a * rmse_measure * exp(size_measure * b));
+	print('comment data (score,rmse_measure,size_measure) ', score, rmse_measure, size_measure);
 }
 
 function calComment() {
