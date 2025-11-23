@@ -106,5 +106,5 @@ theme: butterfly
 deploy:
 - type: git
   repo: git@github.com:Mrcer/Blog.git
-  branch: main
+  branch: site
   message: 自动更博客
