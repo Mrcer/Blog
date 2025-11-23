@@ -1,0 +1,32 @@
+class:
+  class_name: 大佬们
+  link_list:
+    1:
+      name: GZTime
+      link: https://blog.gztime.cc/
+      avatar: https://cdn.gzti.me/avatar/Icon_2021.png
+      descr: 很e的全栈选手，我是 gzfan
+
+    2: 
+      name: Futrime
+      link: https://blog.futrime.com/zh-cn/
+      avatar: https://blog.futrime.com/images/avatar_huf41921e709071c5a1c22215d7fffeae1_26128_300x0_resize_q75_box.jpg
+      descr: 很厉害的 ai 大哥
+
+    3:
+      name: chenjunyu19
+      link: https://www.morfans.cn/author/chenjunyu19
+      avatar: https://gravatar.webp.se/avatar/49c4ee833895b47f0eb775c0071bb5cb?s=256&d=wavatar&r=g
+      descr: 喜欢喝茶的朋友，米哈游忠实粉丝
+
+    4:
+      name: fuuzen
+      link: https://taf.fyi
+      avatar: https://taf.fyi/images/avatar.jpg
+      descr: 喜欢塔菲的学弟
+
+    5:
+      name: feifanyulu
+      link: https://feifanyulu.github.io/
+      avatar: https://feifanyulu.github.io/img/avatar.jpg
+      descr: 师姐带我吃好吃的！
