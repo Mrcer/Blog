@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux 使用笔记 | 深海里的大菠萝</title><meta name="author" content="大菠萝"><meta name="copyright" content="大菠萝"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="零零碎碎记录我使用 Linux 时遇到的问题、解决办法，以及一些感想。持续更新。"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Linux 使用笔记",
+  "url": "https://mrcer.gitee.io/Blog/2025/11/28/Linux-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/",
+  "image": "https://mrcer.gitee.io/Blog/images/covers/arch.svg",
+  "datePublished": "2025-11-28T07:31:35.000Z",
+  "dateModified": "2025-11-28T09:29:22.271Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "大菠萝",
+      "url": "https://mrcer.gitee.io/Blog"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/Blog/images/favicon.png"><link rel="canonical" href="https://mrcer.gitee.io/Blog/2025/11/28/Linux-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/Blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux 使用笔记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style> .post-bg { object-fit: contain !important;} </style><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/Blog/images/Pauc_avatar.jpg" onerror="this.onerror=null;this.src='/Blog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/Blog/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/Blog/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/Blog/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Blog/link/"><i class="fa-fw fas fa-link"></i><span> 大佬聚居地</span></a></div><div class="menus_item"><a class="site-page" href="/Blog/webshow/"><i class="fa-fw fas fa-cubes"></i><span> 静态演示</span></a></div><div class="menus_item"><a class="site-page" href="/Blog/self/"><i class="fa-fw fas fa-child"></i><span> 自我介绍</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/Blog/images/covers/arch.svg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/Blog/"><span class="site-name">深海里的大菠萝</span></a><a class="nav-page-title" href="/Blog/"><span class="site-name">Linux 使用笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Blog/link/"><i class="fa-fw fas fa-link"></i><span> 大佬聚居地</span></a></div><div class="menus_item"><a class="site-page" href="/Blog/webshow/"><i class="fa-fw fas fa-cubes"></i><span> 静态演示</span></a></div><div class="menus_item"><a class="site-page" href="/Blog/self/"><i class="fa-fw fas fa-child"></i><span> 自我介绍</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Linux 使用笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-28T07:31:35.000Z" title="发表于 2025-11-28 15:31:35">2025-11-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-28T09:29:22.271Z" title="更新于 2025-11-28 17:29:22">2025-11-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="结缘-Linux"><a href="#结缘-Linux" class="headerlink" title="结缘 Linux"></a>结缘 Linux</h1><blockquote>
+<p>I use Arch, btw.</p>
+</blockquote>
+<p>虽然看起来很搞，但现在我确实用 archlinux 作为主力机，而且并非为了装（应该）。且听我慢慢道来。</p>
+<h2 id="从-Ubuntu-to-Go-开始"><a href="#从-Ubuntu-to-Go-开始" class="headerlink" title="从 Ubuntu to Go 开始"></a>从 Ubuntu to Go 开始</h2><p>如果没记错，第一次见到 Linux 桌面版应该是在高中信息竞赛时，我还在无聊地被老师远程控制桌面，而我朋友竟然可以继续打代码。</p>
+<p>这一下子吸引了我注意。细看两眼，这系统、这代码、这调试如此与众不同！那时，我还在 windows 上用 dev-c++ 编写运行调试，而朋友是在用 ubuntu 上用 vim、g++、gdb 做题。这给了我不小震撼，我还记得他当时应该在尝试用字节形式实现大数计算——现在我也会了，甚至可能会写 SIMD 加速哈哈。不过，当时最羡慕的还是可以在老师讲课时敲代码。于是我向他取经，这才知道他在 U 盘上装了 Ubuntu Live。和正常操作系统不同，Live 系统开机后不会修改本地磁盘数据，一旦关机系统就会被“还原”。这通常是用来安装新系统的，如果用作日常使用就要解决数据持久化的问题。我在学习他制作了这样的启动 U 盘后，就曾多次因为碰到 U 盘而导致系统直接卡死，导致代码丢失。后来，我学会了在 U 盘上划分一个持久化分区，从而实现重要数据的持久化。</p>
+<p>除了丢失数据的可能外，每次全新系统的网络配置、环境配置也是稍微麻烦的一点。所幸信息学竞赛不需要太复杂的环境，只要安装 vim、g++、gdb 即可使用；<br>网络配置对于当时的我来说不太容易，那时我还没理解五层网络模型这些知识，只会按朋友指导配好IP、Mask、DNS这些，不过用多几次也就学会了。</p>
+<p>说了这么多缺点，其实用 U 盘上的 Live 系统还是有一些优点的。首先他安装非常简单，只需要找个烧录软件把镜像写进 U 盘就行了，不需要配置引导、不用担心破坏任何数据（对于空 U 盘），甚至不用“安装”。<br>其次，能够带着 U 盘到处跑，随时随地都能“夺舍”一台电脑，这本身就很酷！最后，Live 系统不用考虑 U 盘性能问题，毕竟启动介质是只读的，大大减轻了 IO 压力。</p>
+<p>这是我第一次使用 Linux 系统，也是我第一次接触 javac 以外的各种命令。g++、gdb 这些底层工具的使用让我提前接触到了系统相关的知识，为我后面计科学习种下了个种子。</p>
+<h2 id="尝试更多使用方式"><a href="#尝试更多使用方式" class="headerlink" title="尝试更多使用方式"></a>尝试更多使用方式</h2><p>上大学后，我陆续尝试了更多使用 Linux 的方式。</p>
+<p>首先是完整的系统。Live 系统面对轻量任务时虽然还能胜任，但每次还原系统终究还是太不方便了。不过，我那时还不会拆机加硬盘，更别提分区装双系统——不过我倒是在之前装机时拜托过亲戚装 Windows-Ubuntu 双系统。此外，我也是一个胆子比较小的人，担心在自己电脑上折腾出事。于是我第一次装的系统是在 U 盘上进行的，其实也很简单，就是电脑上插了两个 U 盘，一个 Live 一个目标 U 盘，启动 Live 系统后安装到目标 U 盘就完事了。</p>
+<p>此外，我还了解到了 Termux，以及类似的 Aid Learning。他们吸引我的点和 Ubuntu to Go 类似，那就是随时随地用自己的系统写代码！可能这看起来很好笑，尤其是当我上课掏出手机支架、移动键盘，用 vim 在小小屏幕上写代码时，或者是我尝试在 aarch64 上尝试编译安装 numpy、scipy 这些时。不过那个时候我已经有点喜欢上折腾了，只要随便有点理由，比如我不想带几斤重的游戏本，或者是我想用手机跑代码，我就会做。现在看来，这些也不是全无收获的，我确实在上面写过上百行代码吧，现在我也会用 termux 跑些 traceroute 之类的软件。</p>
+<p>当然，由于课程需要，我日常使用的电脑，也就是我的游戏本，也需要一个 Linux 环境。我不记得谁先谁后了，依稀记得自己在上面装过 wsl、虚拟机、双系统，但最后稳定在了 wsl 上。wsl 确实是和 windows 共存的最佳选项，如果你只是想拥有 linux 环境的话。</p>
+<h2 id="KDE-让我投奔了-ArchLinux"><a href="#KDE-让我投奔了-ArchLinux" class="headerlink" title="KDE 让我投奔了 ArchLinux"></a>KDE 让我投奔了 ArchLinux</h2><p>用过 Ubuntu 的都知道，他的界面和 Windows 是有不少区别的，而且当时整体 ui 设计偏拟物一点。所以当我第一次看到装了 kde plasma 桌面的 archlinux，看到他熟悉的桌面布局、融为一体的窗口状态栏、简洁清新的扁平设计、好看的桌面壁纸（？），我就被吸引过去了。进一步了解，发现 ArchLinux 提供了相当完善的文档，很适合我了解 linux 相关知识，于是就决定投奔 ArchLinux 了。</p>
+<p>一开始 ArchLinux 也是一样装在 U 盘上的，只是我换了一个比较高速的 U 盘。第一次装 ArchLinux 时跟随 wiki 安装，连桌面环境都没安装，进系统后在 tty 上折腾了半天网络配置，还为了简洁只装了 plasma 基本包，导致缺这少那的。这是我第一次见识到 archlinux 相对 ubuntu 的折腾，不过我说服了自己，更何况之前已经有不少折腾经验了。后来 archlinux 越用越顺手——命令行体验完爆没有配置过的 windows——所以我经常在主力机上启动它办公。</p>
+<p>后来，我买了小主机，往上面装了 Windows-ArchLinux 双系统，从此工位上基本都启动 ArchLinux 了。现在看来，ArchLinux（或者任何 Linux 发行版）在有一定计算机知识储备的情况下，用多了之后也不会比 Windows 难用，甚至开发体验还要更加顺手。当然，偶尔你会不得不切换到 Windows，比如需要用 office 全家桶，比如一些专有软件。</p>
+<p>然而，即便在日常使用中，偶尔你也会需要学习探索，解决一些 linux 上的小问题……</p>
+<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><p>字体配置在很多 linux 发行版中都很重要，但在 archlinux 中尤为如此……</p>
+<ol>
+<li>基础知识<ul>
+<li><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%9C%AC%E5%9C%B0%E5%8C%96#Fontconfig_%E8%AE%BE%E7%BD%AE">fontconfig</a> 是底层字体配置，所有应用都会用它</li>
+<li>plasma 也提供了字体配置，但那只适用于部分应用</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/681156946">关于字体设计的常识</a>：全角&#x2F;半角，衬线&#x2F;无衬线&#x2F;等宽</li>
+</ul>
+</li>
+<li>中文显示方块：<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%9C%AC%E5%9C%B0%E5%8C%96#%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93">安装中文字体</a></li>
+<li>关字窄窄的，门字穿出去：<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%9C%AC%E5%9C%B0%E5%8C%96#%E4%BF%AE%E6%AD%A3%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E4%B8%BA%E5%BC%82%E4%BD%93%EF%BC%88%E6%97%A5%E6%96%87%EF%BC%89%E5%AD%97%E5%BD%A2">修改 locale</a></li>
+<li>我输入法呢：大多数时候，装一下 fcitx5 等输入法；但有一些应用有输入法也打不开，比如 wps，那就只能<a target="_blank" rel="noopener" href="https://wszqkzqk.github.io/2024/03/09/WPS-Fcitx5/">搜索</a>解决了，这也是 linux 不得不品的一环</li>
+<li>安装宋体后好多地方变宋体了：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dingnosakura/p/18277314">配置正确的后备字体</a></li>
+</ol>
+<p>这时就会发现，很多时候认真阅读文档就能解决这些问题，而且 arch wiki 确实写得很好看……RTFM! (sorry)</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/Blog/tags/%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/">技术杂谈</a></div><div class="post-share"><div class="social-share" data-image="/Blog/images/covers/arch.svg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/Blog/2025/11/23/2025-%E5%B9%B4-ArchLinux-%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" title="2025 年 ArchLinux 网易云音乐使用体验"><img class="cover" src="/Blog/images/covers/cat.png" onerror="onerror=null;src='/Blog/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">2025 年 ArchLinux 网易云音乐使用体验</div></div><div class="info-2"><div class="info-item-1">记录一下 Linux 上网易云音乐的安装</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/Blog/2024/11/06/CMake-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-%E5%9C%A8%E4%BD%A0%E5%AD%A6%E4%B9%A0-CMake-%E4%B9%8B%E5%89%8D/" title="CMake 前置知识 - 在你学习 CMake 之前"><img class="cover" src="https://cmake.org/wp-content/uploads/2023/08/CMake-Mark-1.svg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-06</div><div class="info-item-2">CMake 前置知识 - 在你学习 CMake 之前</div></div><div class="info-2"><div class="info-item-1">如果我能回去指导那时候的我，我希望能有这样一篇文章，铺平从 devc++ 到 CMake 的路，或者至少给出一张更加清晰的地图，告诉我不要着急，迷雾会在未来扫清。</div></div></div></a><a class="pagination-related" href="/Blog/2024/03/31/%E4%BB%8E%E7%A6%BB%E5%A5%87bug%E5%88%B0C-%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" title="从离奇bug到C++未定义行为"><img class="cover" src="/Blog/images/covers/cat.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-31</div><div class="info-item-2">从离奇bug到C++未定义行为</div></div><div class="info-2"><div class="info-item-1">一直答应要写的博客终于在今天开始写啦！</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/Blog/images/Pauc_avatar.jpg" onerror="this.onerror=null;this.src='/Blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">大菠萝</div><div class="author-info-description">whirling in rags, vast and sad</div><div class="site-data"><a href="/Blog/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/Blog/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/Blog/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E7%BC%98-Linux"><span class="toc-number">1.</span> <span class="toc-text">结缘 Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E-Ubuntu-to-Go-%E5%BC%80%E5%A7%8B"><span class="toc-number">1.1.</span> <span class="toc-text">从 Ubuntu to Go 开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E6%9B%B4%E5%A4%9A%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">尝试更多使用方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KDE-%E8%AE%A9%E6%88%91%E6%8A%95%E5%A5%94%E4%BA%86-ArchLinux"><span class="toc-number">1.3.</span> <span class="toc-text">KDE 让我投奔了 ArchLinux</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-number">2.</span> <span class="toc-text">字体</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Blog/2025/11/28/Linux-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="Linux 使用笔记"><img src="/Blog/images/covers/arch.svg" onerror="this.onerror=null;this.src='/Blog/img/404.jpg'" alt="Linux 使用笔记"/></a><div class="content"><a class="title" href="/Blog/2025/11/28/Linux-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="Linux 使用笔记">Linux 使用笔记</a><time datetime="2025-11-28T07:31:35.000Z" title="发表于 2025-11-28 15:31:35">2025-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Blog/2025/11/23/2025-%E5%B9%B4-ArchLinux-%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" title="2025 年 ArchLinux 网易云音乐使用体验"><img src="/Blog/images/covers/cat.png" onerror="this.onerror=null;this.src='/Blog/img/404.jpg'" alt="2025 年 ArchLinux 网易云音乐使用体验"/></a><div class="content"><a class="title" href="/Blog/2025/11/23/2025-%E5%B9%B4-ArchLinux-%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" title="2025 年 ArchLinux 网易云音乐使用体验">2025 年 ArchLinux 网易云音乐使用体验</a><time datetime="2025-11-23T11:03:19.000Z" title="发表于 2025-11-23 19:03:19">2025-11-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Blog/2024/11/06/CMake-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-%E5%9C%A8%E4%BD%A0%E5%AD%A6%E4%B9%A0-CMake-%E4%B9%8B%E5%89%8D/" title="CMake 前置知识 - 在你学习 CMake 之前"><img src="https://cmake.org/wp-content/uploads/2023/08/CMake-Mark-1.svg" onerror="this.onerror=null;this.src='/Blog/img/404.jpg'" alt="CMake 前置知识 - 在你学习 CMake 之前"/></a><div class="content"><a class="title" href="/Blog/2024/11/06/CMake-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-%E5%9C%A8%E4%BD%A0%E5%AD%A6%E4%B9%A0-CMake-%E4%B9%8B%E5%89%8D/" title="CMake 前置知识 - 在你学习 CMake 之前">CMake 前置知识 - 在你学习 CMake 之前</a><time datetime="2024-11-06T02:03:44.000Z" title="发表于 2024-11-06 10:03:44">2024-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Blog/2024/10/02/%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%92%8C%E4%BA%BA%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/" title="一些思考：生成式人工智能和人类的区别"><img src="/Blog/images/covers/mmsd.jpg" onerror="this.onerror=null;this.src='/Blog/img/404.jpg'" alt="一些思考：生成式人工智能和人类的区别"/></a><div class="content"><a class="title" href="/Blog/2024/10/02/%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%92%8C%E4%BA%BA%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/" title="一些思考：生成式人工智能和人类的区别">一些思考：生成式人工智能和人类的区别</a><time datetime="2024-10-02T03:45:18.000Z" title="发表于 2024-10-02 11:45:18">2024-10-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Blog/2024/03/31/%E4%BB%8E%E7%A6%BB%E5%A5%87bug%E5%88%B0C-%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" title="从离奇bug到C++未定义行为"><img src="/Blog/images/covers/cat.png" onerror="this.onerror=null;this.src='/Blog/img/404.jpg'" alt="从离奇bug到C++未定义行为"/></a><div class="content"><a class="title" href="/Blog/2024/03/31/%E4%BB%8E%E7%A6%BB%E5%A5%87bug%E5%88%B0C-%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" title="从离奇bug到C++未定义行为">从离奇bug到C++未定义行为</a><time datetime="2024-03-31T13:55:28.000Z" title="发表于 2024-03-31 21:55:28">2024-03-31</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2025 By 大菠萝</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/Blog/js/utils.js"></script><script src="/Blog/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="/Blog/"></script></div></body></html>
